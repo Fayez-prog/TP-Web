@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choix carreau vaillances</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="choix.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Choix carreau vaillances</h1>
+        <form name="fc">
+            <div class="form-section">
+                <h2>Choix du motif</h2>
+                <div class="form-group">
+                    <label for="motifs">Motif</label>
+                    <select id="motifs" name="motifs" onchange="actualiser();">
+                        <option>Cercles</option>
+                        <option>Poisson</option>
+                        <option>Losanges</option>
+                        <option>Sables</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="larg">Largeur</label>
+                    <input type="text" readonly id="larg" name="larg" /> mètre
+                </div>
+                <div class="form-group">
+                    <label for="haut">Hauteur</label>
+                    <input type="text" readonly id="haut" name="haut" /> mètre
+                </div>
+                <div class="form-group">
+                    <label for="prix">Prix</label>
+                    <input type="text" readonly id="prix" name="prix" /> DTA
+                </div>
+                <div class="form-group">
+                    <label for="surf">Surface</label>
+                    <input type="text" readonly id="surf" name="surf" /> m²
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Dimensions de la cuisine</h2>
+                <div class="form-group">
+                    <label for="largCuisine">Largeur</label>
+                    <input type="text" value="1" id="largCuisine" name="largCuisine" onchange="actualiserSurfCui();" />
+                    mètre
+                </div>
+                <div class="form-group">
+                    <label for="hautCuisine">Hauteur</label>
+                    <input type="text" value="1" id="hautCuisine" name="hautCuisine" onchange="actualiserSurfCui();" />
+                    mètre
+                </div>
+                <div class="form-group">
+                    <label for="surfCuisine">Surface</label>
+                    <input type="text" readonly id="surfCuisine" name="surfCuisine" /> m²
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Résultat</h2>
+                <div class="form-group">
+                    <label for="nbCarreaux">Nombre de carreaux</label>
+                    <input type="text" readonly id="nbCarreaux" name="nbCarreaux" />
+                </div>
+                <div class="form-group">
+                    <label for="prixTotal">Prix total</label>
+                    <input type="text" readonly id="prixTotal" name="prixTotal" /> DTA
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+form {
+    margin-top: 10px;
+    margin-left: 300px;
+    width: 450px;
+    background-color: #6CC;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+legend {
+    font-weight: bold;
+}
+
+fieldset {
+    border: 2px solid #00F;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+label {
+    font-style: italic;
+}
+
+textarea,
+input {
+    border: 2px solid #0CF;
+    font-family: Georgia, "Times New Roman";
+    padding: 7px;
+    width: 95%;
+    border-radius: 15px;
+}
+
+img {
+    margin-left: auto;
+}
+
+input[type="submit"] {
+    background-color: #0CF;
+    border: none;
+    color: #30C;
+    text-shadow: 0 1px 1px #000;
+    text-align: center;
+    margin-left: 10px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #099;
+    cursor: pointer;
+    box-shadow: 0 1px 1px #c0d576;
+}

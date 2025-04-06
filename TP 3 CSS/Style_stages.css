@@ -1,0 +1,117 @@
+body {
+    background-image: url('arr_plan.png');
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    background-color: black;
+}
+
+header {
+    margin-top: 15px;
+}
+
+section {
+    margin-left: 20px;
+}
+
+h3 {
+    color: white;
+}
+
+#parag {
+    text-align: justify;
+}
+
+section article {
+    position: absolute;
+    top: 110px;
+}
+
+#art1 {
+    left: 40px;
+    width: 200px;
+}
+
+#art2 {
+    left: 270px;
+    width: 300px;
+}
+
+.plus,
+h1 {
+    color: #33ae0f;
+}
+
+a {
+    text-decoration: none;
+}
+
+aside,
+section article {
+    border-radius: 10px;
+    background-color: white;
+    padding: 7px;
+}
+
+aside {
+    position: fixed;
+    top: 80px;
+    left: 600px;
+}
+
+table {
+    border-collapse: separate;
+    margin: 0 auto;
+}
+
+caption {
+    caption-side: bottom;
+}
+
+th {
+    background-color: #a8f77d;
+}
+
+td {
+    border: thin solid green;
+}
+
+fieldset {
+    border: 2px dashed green;
+}
+
+legend {
+    text-transform: uppercase;
+}
+
+label {
+    font-weight: bold;
+}
+
+ul,
+textarea,
+input {
+    box-shadow: 0 1px 1px #000000;
+}
+
+#sub {
+    text-align: center;
+    background-color: green;
+    color: white;
+}
+
+#sub:hover {
+    cursor: pointer;
+    background-color: white;
+    color: green;
+}
+
+footer {
+    position: absolute;
+    bottom: 30px;
+    font-style: italic;
+    color: yellow;
+}
+
+ul {
+    list-style-image: url('puce.jpg');
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calcul du total à payer</title>
+    <script>
+        // Fonction pour vérifier que le nom ne contient que des lettres majuscules
+        function VerifNom() {
+            let nom = document.getElementById("nom").value;
+            if (/^[A-Z\s]+$/.test(nom)) {
+                alert("Nom valide");
+            } else {
+                alert("Nom invalide : utilisez uniquement des lettres majuscules.");
+            }
+        }
+
+        // Fonction pour calculer et afficher le montant total
+        function affMt() {
+            let total = 0;
+            if (document.getElementById("velo").checked) {
+                total += 100;
+            }
+            if (document.getElementById("rollers").checked) {
+                total += 50;
+            }
+            if (document.getElementById("ballon_foot").checked) {
+                total += 10;
+            }
+            document.getElementById("montant").value = total;
+        }
+
+        // Fonction pour activer/désactiver le champ "code carte"
+        function affCarte() {
+            let paiement = document.getElementById("paiement").value;
+            if (paiement == 1) {
+                document.getElementById("code_carte").disabled = false;
+            } else {
+                document.getElementById("code_carte").disabled = true;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <!-- Champ pour le nom et prénom -->
+        <label for="nom">Nom et Prénom :</label>
+        <input type="text" id="nom" onblur="VerifNom()"><br><br>
+
+        <!-- Cases à cocher pour les jouets -->
+        <label>Choix du ou des jouets :</label>
+        <input type="checkbox" id="velo" onclick="affMt()"> Vélo (100)
+        <input type="checkbox" id="rollers" onclick="affMt()"> Rollers (50)
+        <input type="checkbox" id="ballon_foot" onclick="affMt()"> Ballon Foot (10)<br><br>
+
+        <!-- Champ pour afficher le montant total -->
+        <label for="montant">Montant :</label>
+        <input type="text" id="montant" disabled><br><br>
+
+        <!-- Liste déroulante pour le mode de paiement -->
+        <label for="paiement">Payement par :</label>
+        <select id="paiement" onchange="affCarte()">
+            <option value="0">E-dîner</option>
+            <option value="1">carte Visa</option>
+        </select>
+
+        <!-- Champ pour le code carte (désactivé par défaut) -->
+        <label for="code_carte">Code carte :</label>
+        <input type="text" id="code_carte" disabled><br><br>
+    </form>
+</body>
+
+</html>

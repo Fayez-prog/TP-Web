@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>EX</title>
+    <script>
+        function Test(x1, x2) {
+            if (isNaN(x1) || isNaN(x2))
+                return false;
+            else
+                return true;
+        }
+        function Calculer(x1, x2) {
+            return x1 * x2;
+        }
+        function Monttot() {
+            val1 = prompt("Donnez la quantité du produit : ", "");
+            val2 = prompt("Donnez le prix d’achat : ", "");
+            if (Test(val1, val2))
+                document.write(Calculer(val1, val2));
+            else
+                document.write("Les valeurs ne sont pas numériques");
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        Monttot();
+    </script>
+</body>
+
+</html>

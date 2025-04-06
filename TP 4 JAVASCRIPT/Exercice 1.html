@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<script>
+    function VerifNom() {
+        var s = f.np.value;
+        if (s == "") alert("champ obligatoire");
+        else {
+            var b = true;
+            for (i = 0; i < s.length; i++) {
+                if (s.charAt(i) < "A" || s.charAt(i) > "Z") {
+                    b = false;
+                    break;
+                }
+
+            }
+            if (b == false) alert("Le champ doit être écrit en majuscule");
+        }
+    }
+    //L'adresse doit comporter 2 mots minimum
+    function VerifAdresse() {
+        var s = f.adr.value;
+        if (s.indexOf(" ") < 0) alert("Veuillez saisir au moins 2 mots");//sol 2 avec split
+    }
+    //Le code postal doit etre 4 chiffres
+    function VerifCodeP() {
+        var s = f.cp.value;
+        if ((isNaN(s)) || (s.length != 4))
+            alert("code postal non valide");
+    }
+    // Si l'utilisateur choisit "sfax" dans la liste de selection code posta doit commencer par 3, si tunis 1 et si sousse 2.
+    function VerifVille() {
+        if (f.cp.value != "") {
+            var s = f.ville.value;
+            var c = f.cp.value.substr(0, 1);
+            switch (s) {
+                case "sfax": if (c != "3") alert("code postal ne correspond pas à la ville"); break;
+                case "tunis": if (c != "1") alert("code postal ne correspond pas à la ville"); break;
+                case "sousse": if (c != "2") alert("code postal ne correspond pas à la ville"); break;
+            }
+        }
+    }
+    //Le champ "reste" doit afficher le nbre de caractères restant (nb max=100)
+    function ResteCar() {
+        f.reste.value = 100 - f.rq.value.length;
+    }
+    //Le bouton "Envoyer" est initialement désactivé et ne devient actif que si la
+    //case à cocher est "termes" est cochée
+    function Accepte() {
+        if (f.termes.checked)
+            f.Envoyer.disabled = false;
+        else
+            f.Envoyer.disabled = true;
+    }
+</script>
+
+<body>
+    <h1> Formulaire d'inscription </h1>
+    <form name="f">
+        Nom et prénom:<input type="text" name="np" id="np" onblur="VerifNom()" /><br />
+        Adresse:<input type="text" name="" adr id="adr" onblur="VerifAdresse()" />
+        Ville:<select name="ville" id="ville" onchange="VerifVille()">
+            <option value="sfax">Sfax</option>
+            <option value="tunis">Tunis</option>
+            <option value="sousse">Sousse</option>
+        </select>
+        Code postal:<input type="text" onchange="VerifCodeP();VerifVille()" name="cp" id="cp" /><br />
+        Remarques:<br />
+        <textarea name="rq" id="rq" cols="50" rows="3" onkeyup="ResteCar()"></textarea><br />
+        Max 100 caractères, il vous reste:<input type="text" name="reste" id="reste" value="100" disabled /><br />
+        <input type="checkbox" name="termes" id="termes" onclick="Accepte()" /> J'accepte les
+        termes et conditions générales <br />
+        <input type="submit" value="Envoyer" name="Envoyer" id="Envoyer" disabled />
+        <input type="reset" value="Rétablir" />
+    </form>
+</body>
+
+</html>

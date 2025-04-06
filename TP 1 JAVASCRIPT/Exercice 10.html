@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function validateForm() {
+            var name = document.forms["myForm"]["name"];
+            if (name.value == "") {
+                document.getElementById('errorname').innerHTML = "Veuillez entrez un nom valide";
+                name.focus();
+                return false;
+            } else {
+                document.getElementById('errorname').innerHTML = "";
+            }
+        }
+    </script>
+    <style>
+        .error {
+            color: #D8000C;
+            background-color: #FFBABA;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="myForm" onsubmit="return validateForm()">
+
+        <p>Votre nom: <input type="text" name="name" class="field-
+long" /> <span class="error" id="errorname"></span></p>
+
+        <p><input type="submit" value="Envoyer"></p>
+    </form>
+</body>
+
+</html>

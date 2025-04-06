@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon premier Formulaire HTML5</title>
+</head>
+
+<body>
+    <h1 style="font-family:Verdana; font-size:18px">Mon premier Formulaire HTML5</h1>
+
+    <form action="destination.php" method="POST">
+        <!-- Premier groupe de champs -->
+        <fieldset>
+            <legend>Vos coordonnées</legend>
+            <label for="nom">Nom* :</label>
+            <input type="text" id="nom" name="nom" placeholder="Entrez votre nom" required><br><br>
+
+            <label for="prenom">Prénom* :</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom" required><br><br>
+
+            <label for="naissance">Date de naissance :</label>
+            <input type="date" id="naissance" name="naissance"><br><br>
+
+            <label for="email">Mail :</label>
+            <input type="email" id="email" name="email" placeholder="exemple@domaine.com"><br><br>
+
+            <label for="site">Votre site :</label>
+            <input type="url" id="site" name="site" placeholder="http://www.votresite.com"><br><br>
+
+            <label for="code">Code :</label>
+            <input type="password" id="code" name="code" size="40" maxlength="6" pattern="[A-Z]{2}[0-9]{4}[a-z]{2}"
+                placeholder="AB1234cd" required><br><br>
+
+            <label>Sexe :</label><br>
+            <input type="radio" id="homme" name="sexe" value="homme">
+            <label for="homme">Homme</label><br>
+            <input type="radio" id="femme" name="sexe" value="femme">
+            <label for="femme">Femme</label><br><br>
+
+            <label for="pays">Votre pays :</label>
+            <select id="pays" name="pays">
+                <optgroup label="Europe">
+                    <option value="France">France</option>
+                    <option value="Belgique">Belgique</option>
+                    <option value="Italie">Italie</option>
+                    <option value="Allemagne">Allemagne</option>
+                </optgroup>
+                <optgroup label="Amérique">
+                    <option value="USA">USA</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Argentine">Argentine</option>
+                    <option value="Mexique">Mexique</option>
+                </optgroup>
+                <optgroup label="Autres">
+                    <option value="Afrique">Afrique</option>
+                    <option value="Asie">Asie</option>
+                    <option value="Océanie">Océanie</option>
+                    <option value="Australie">Australie</option>
+                </optgroup>
+            </select><br><br>
+        </fieldset>
+
+        <!-- Deuxième groupe de champs -->
+        <fieldset>
+            <legend>Vos goûts</legend>
+            <label>
+                <input type="checkbox" name="gouts" value="pommes"> Pommes
+            </label><br>
+            <label>
+                <input type="checkbox" name="gouts" value="poires"> Poires
+            </label><br>
+            <label>
+                <input type="checkbox" name="gouts" value="scoubidous"> Scoubidous
+            </label><br><br>
+
+            <label for="description">Décrivez vos goûts en détail :</label><br>
+            <textarea id="description" name="description" cols="50" rows="5" placeholder="Décrivez vos goûts ici..."
+                onclick="this.value=''"></textarea><br><br>
+        </fieldset>
+
+        <!-- Troisième groupe de champs -->
+        <fieldset>
+            <legend>Envoyez-nous votre photo</legend>
+            <label for="photo">Choisir un fichier :</label>
+            <input type="file" id="photo" name="photo"><br><br>
+
+            <input type="hidden" name="info_cachee" value="valeur_cachee">
+
+            <input type="reset" value="Effacer">
+            <input type="submit" value="Envoyer">
+        </fieldset>
+    </form>
+</body>
+
+</html>

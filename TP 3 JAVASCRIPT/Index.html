@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Commande</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Formulaire de Commande</h2>
+        <form id="orderForm">
+            <!-- Date -->
+            <label for="date">Date:</label>
+            <input type="text" id="date" name="date" readonly><br><br>
+
+            <!-- Produit et Prix -->
+            <label for="produit">Produit:</label>
+            <select id="produit" name="produit">
+                <option value="Clavier">Clavier</option>
+                <option value="Souris">Souris</option>
+                <option value="Flash Disk">Flash Disk</option>
+            </select>
+            <label for="prix">Prix:</label>
+            <input type="text" id="prix" name="prix" readonly>
+
+            <!-- Quantité -->
+            <label for="quantite">Quantité:</label>
+            <input type="text" id="quantite" name="quantite"><br><br>
+
+            <!-- Total -->
+            <label for="total">Total:</label>
+            <input type="text" id="total" name="total" readonly><br><br>
+
+            <!-- Adresse -->
+            <label for="adresse">Votre Adresse:</label>
+            <input type="text" id="adresse" name="adresse"><br><br>
+
+            <!-- Bouton Commander -->
+            <button type="submit" id="commander" disabled>Commander</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

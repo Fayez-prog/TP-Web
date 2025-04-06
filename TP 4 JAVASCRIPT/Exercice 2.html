@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<script>
+    function message(erreurs) {
+        if (erreurs == 0) alert('Bravo, aucune erreur !');
+        else if (erreurs == 1) alert('Tu as fait une erreur !');
+        else alert('Tu as fait ' + erreurs + ' erreurs !');
+    }
+    function verif() {
+        erreurs = 0;
+        if (form1.liste1.value == 1) erreurs++;
+        if (form1.liste2.value == 1) erreurs++;
+        if (form1.rep1.value != "rectangle") erreurs++;
+        if (form1.rep2.value != "180") erreurs++;
+        if (form1.c1[0].checked == true) erreurs++;
+        if (form1.c1[0].checked == false && form1.c1[1].checked == false) erreurs++;
+        message(erreurs);
+    }
+</SCRIPT>
+
+<body>
+    <H1>R&eacute;pondre aux questions suivantes : </H1>
+    <FORM NAME="form1">
+        <H2>Compléter en choisissant un mot dans une liste</H2>
+        <OL>
+            <LI> On appelle triangle <SELECT NAME="liste1" SIZE=1>
+                    <OPTION VALUE=1>équilatéral</OPTION>
+                    <OPTION VALUE=0>isocèle</OPTION>
+                    <OPTION VALUE=1>rectangle</OPTION>
+                    <OPTION VALUE=1>scalène</OPTION>
+                </SELECT> un triangle qui a deux côtés de même longueur. </LI>
+            <LI> On appelle <SELECT NAME="liste2" SIZE=1>
+                    <OPTION VALUE=1>bissectrice</OPTION>
+                    <OPTION VALUE=1>hauteur</OPTION>
+                    <OPTION VALUE=0>médiane</OPTION>
+                    <OPTION VALUE=1>médiatrice</OPTION>
+                </SELECT> d'un triangle une droite qui passe par un sommet et le milieu du côté opposé.
+            </LI>
+        </OL>
+        <H2>Compléter en écrivant un mot</H2>
+        <OL>
+            <LI>On appelle triangle <INPUT NAME="rep1" TYPE="text" />, un triangle qui a un
+                angle droit.
+            </LI>
+            <LI> La somme des 3 angles d'un triangle est égale à <INPUT NAME="rep2" TYPE="text" />
+                degrés.
+            </LI>
+        </OL>
+        <H2>Compléter en choisissant une réponse</H2>
+        Un angle droit a : <OL>
+            <LI><INPUT NAME="c1" TYPE="radio" />45°</LI>
+            <LI>
+                <INPUT NAME="c1" TYPE="radio" /> 90°
+            </LI>
+        </OL>
+        <DIV ALIGN=right><INPUT TYPE=button VALUE="Vérifier" onClick="verif()"></INPUT></DIV>
+    </form>
+</body>
+
+</html>

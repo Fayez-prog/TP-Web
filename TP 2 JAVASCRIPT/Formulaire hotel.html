@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire Hôtel</title>
+    <style>
+        .etoiles {
+            font-size: 24px;
+            color: gold;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .ligne-etoiles-nom {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Formulaire Hôtel</h2>
+    <form>
+        <!-- Catégorie -->
+        <label>Catégorie :</label>
+        <input type="radio" name="categorie" value="3" onclick="AfficheEtoile()"> 3 étoiles
+        <input type="radio" name="categorie" value="4" onclick="AfficheEtoile()"> 4 étoiles
+        <input type="radio" name="categorie" value="5" onclick="AfficheEtoile()"> 5 étoiles
+        <br><br>
+
+        <!-- Nom hôtel et étoiles sur la même ligne -->
+        <div class="ligne-etoiles-nom">
+            <label for="nomHotel">Nom hôtel :</label>
+            <input type="text" id="nomHotel" name="nomHotel" onblur="VerifNom()">
+            <div id="zoneEtoiles" class="etoiles"></div>
+        </div>
+        <span id="nomError" class="error"></span><br>
+
+        <!-- Tel -->
+        <label for="tel">Tel :</label>
+        <input type="text" id="tel" name="tel" onblur="VerifTel()">
+        <span id="telError" class="error"></span><br><br>
+
+        <!-- Site Web -->
+        <label for="siteWeb">Site Web :</label>
+        <input type="text" id="siteWeb" name="siteWeb" onblur="VerifSite()">
+        <span id="siteError" class="error"></span><br><br>
+    </form>
+
+    <script>
+        // Fonction pour afficher les étoiles à côté du nom de l'hôtel
+        function AfficheEtoile() {
+            const categories = document.querySelectorAll('input[name="categorie"]');
+            const zoneEtoiles = document.getElementById('zoneEtoiles');
+            categories.forEach(categorie => {
+                if (categorie.checked) {
+                    zoneEtoiles.textContent = '★'.repeat(categorie.value); // Affiche les étoiles
+                }
+            });
+        }
+
+        // Fonction pour vérifier le nom de l'hôtel
+        function VerifNom() {
+            const nomHotel = document.getElementById('nomHotel').value;
+            const regex = /^[A-Z]+$/;
+            const nomError = document.getElementById('nomError');
+            if (!regex.test(nomHotel)) {
+                nomError.textContent = "Le nom de l'hôtel ne doit contenir que des lettres majuscules.";
+                return false;
+            } else {
+                nomError.textContent = "";
+                return true;
+            }
+        }
+
+        // Fonction pour vérifier le numéro de téléphone
+        function VerifTel() {
+            const tel = document.getElementById('tel').value;
+            const regex = /^[0-9]+$/;
+            const telError = document.getElementById('telError');
+            if (!regex.test(tel)) {
+                telError.textContent = "Le numéro de téléphone ne doit contenir que des chiffres.";
+                return false;
+            } else {
+                telError.textContent = "";
+                return true;
+            }
+        }
+
+        // Fonction pour vérifier le site web
+        function VerifSite() {
+            const siteWeb = document.getElementById('siteWeb').value;
+            const siteError = document.getElementById('siteError');
+            if (!siteWeb.startsWith('www.')) {
+                siteError.textContent = "Le site web doit commencer par 'www.'.";
+                return false;
+            } else {
+                siteError.textContent = "";
+                return true;
+            }
+        }
+    </script>
+</body>
+
+</html>

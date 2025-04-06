@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcul du total d'une commande</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Calcul du total d'une commande</h1>
+    <form id="orderForm">
+        <label for="taille">Taille des tableaux (nombre d'articles) :</label>
+        <input type="number" id="taille" min="1" required>
+        <button type="button" onclick="demarrerSaisie()">Commencer la saisie</button>
+    </form>
+
+    <div id="saisieSection" style="display: none;">
+        <h2>Saisie des quantités et des prix</h2>
+        <div id="saisieFields"></div>
+        <button type="button" onclick="calculerTotal()">Calculer le total</button>
+    </div>
+
+    <div id="resultSection" style="display: none;">
+        <h2>Résultats</h2>
+        <table id="tableauResultats"></table>
+    </div>
+
+    <script>
+        let TAB_QTE = [];
+        let TAB_PRIX = [];
+
+        // Fonction pour lire la taille des tableaux
+        function Taille() {
+            return parseInt(document.getElementById('taille').value);
+        }
+
+        // Fonction pour remplir les tableaux
+        function Remplir(Tab, n, type) {
+            for (let i = 0; i < n; i++) {
+                const valeur = parseFloat(prompt(`Saisir la ${type} pour l'article ${i + 1}:`));
+                if (isNaN(valeur)) {
+                    alert("Veuillez saisir un nombre valide.");
+                    return false;
+                }
+                Tab.push(valeur);
+            }
+            return true;
+        }
+
+        // Fonction pour afficher les éléments d'un tableau
+        function Affichage(Tab) {
+            return Tab.join(", ");
+        }
+
+        // Fonction pour calculer le produit de deux nombres
+        function Produit(q, p) {
+            return q * p;
+        }
+
+        // Fonction pour calculer le total de la commande
+        function Calcul(Tab1, Tab2) {
+            let total = 0;
+            for (let i = 0; i < Tab1.length; i++) {
+                total += Produit(Tab1[i], Tab2[i]);
+            }
+            return total;
+        }
+
+        // Fonction pour afficher le total dans une nouvelle fenêtre
+        function Affichage_Fen(s) {
+            const newWindow = window.open("", "Total", "width=300,height=300,menubar=yes,status=yes,location=yes");
+            newWindow.document.write(`<h2>Total de la commande</h2><p>${s}</p>`);
+            newWindow.document.close();
+        }
+
+        // Fonction pour afficher les tableaux dans un tableau HTML
+        function Affichage_TabHtml(Tab, type) {
+            const table = document.getElementById('tableauResultats');
+            const row = table.insertRow();
+            const cellType = row.insertCell();
+            cellType.textContent = type;
+            Tab.forEach(valeur => {
+                const cell = row.insertCell();
+                cell.textContent = valeur;
+            });
+        }
+
+        // Fonction pour démarrer la saisie des quantités et des prix
+        function demarrerSaisie() {
+            const taille = Taille();
+            if (isNaN(taille) || taille <= 0) {
+                alert("Veuillez saisir une taille valide.");
+                return;
+            }
+
+            // Afficher la section de saisie
+            document.getElementById('saisieSection').style.display = 'block';
+
+            // Remplir les tableaux TAB_QTE et TAB_PRIX
+            if (!Remplir(TAB_QTE, taille, "quantité")) return;
+            if (!Remplir(TAB_PRIX, taille, "prix")) return;
+
+            // Afficher les tableaux
+            alert(`Quantités : ${Affichage(TAB_QTE)}\nPrix : ${Affichage(TAB_PRIX)}`);
+        }
+
+        // Fonction pour calculer et afficher le total
+        function calculerTotal() {
+            const total = Calcul(TAB_QTE, TAB_PRIX);
+            Affichage_Fen(`Le total de la commande est : ${total}`);
+
+            // Afficher les tableaux dans un tableau HTML
+            document.getElementById('resultSection').style.display = 'block';
+            Affichage_TabHtml(TAB_QTE, "Quantité");
+            Affichage_TabHtml(TAB_PRIX, "Prix");
+        }
+    </script>
+</body>
+
+</html>

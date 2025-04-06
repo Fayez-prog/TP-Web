@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Produits</title>
+    <link rel="stylesheet" href="Style.css">
+    <script src="Script.js"></script>
+</head>
+
+<body>
+    <h1>Gestion des Produits</h1>
+
+    <!-- Formulaire d'ajout d'un produit -->
+    <form id="formProduit">
+        <label for="id">ID:</label>
+        <input type="text" id="id" required><br>
+
+        <label for="reference">Référence:</label>
+        <input type="text" id="reference" required><br>
+
+        <label for="intitule">Intitulé:</label>
+        <input type="text" id="intitule" required><br>
+
+        <label for="quantite">Quantité:</label>
+        <input type="number" id="quantite" required><br>
+
+        <label for="prix">Prix:</label>
+        <input type="number" id="prix" required><br>
+
+        <!-- Champ pour l'URL de l'image -->
+        <label for="photo">URL de l'image:</label>
+        <input type="text" id="photo" required><br>
+
+        <button type="button" onclick="addCart()">Ajouter</button>
+    </form>
+
+    <!-- Barre de recherche -->
+    <label for="intitulef">Chercher:</label>
+    <input type="text" id="intitulef" onkeyup="filter()">
+
+    <!-- Tableau des produits -->
+    <table id="myTable" border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Référence</th>
+                <th>
+                    Intitulé
+                    <button onclick="sortByIntitule('asc')">▲</button>
+                    <button onclick="sortByIntitule('desc')">▼</button>
+                </th>
+                <th>Quantité</th>
+                <th>
+                    Prix
+                    <button onclick="sortByPrix('asc')">▲</button>
+                    <button onclick="sortByPrix('desc')">▼</button>
+                </th>
+                <th>Image</th>
+                <th>Minus</th>
+                <th>Plus</th>
+                <th>Supprimer</th>
+                <th>Modifier</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <!-- Les lignes du tableau seront ajoutées ici dynamiquement -->
+        </tbody>
+    </table>
+
+    <!-- Total de la facture -->
+    <div id="total"></div>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire d'inscription</title>
+</head>
+
+<body>
+    <div>
+        <h1>Formulaire d'inscription</h1>
+        <form action="" method="">
+            <!-- Nom et Prénom -->
+            <div>
+                <label for="nom">Votre nom :</label>
+                <input type="text" id="nom" name="nom" required>
+            </div>
+            <div>
+                <label for="prenom">Votre prénom :</label>
+                <input type="text" id="prenom" name="prenom" required>
+            </div>
+
+            <!-- Date de naissance -->
+            <div>
+                <label for="date_naissance">Votre date de naissance :</label>
+                <input type="date" id="date_naissance" name="date_naissance" required>
+            </div>
+
+            <!-- Numéro de téléphone -->
+            <div>
+                <label for="telephone">Votre numéro de téléphone :</label>
+                <input type="tel" id="telephone" name="telephone" required>
+            </div>
+
+            <!-- Mot de passe -->
+            <div>
+                <label for="mot_de_passe">Votre mot de passe :</label>
+                <input type="password" id="mot_de_passe" name="mot_de_passe" required>
+            </div></br>
+
+            <!-- Niveau d'étude -->
+            <div>
+                <label>Quel est votre niveau d'étude ?</label>
+                <div>
+                    <label for="">
+                        <input type="radio" name="niveau_etude" value="secondaire"> Secondaire</label></br>
+                    <label for="">
+                        <input type="radio" name="niveau_etude" value="bac"> Bac</label></br>
+                    <label for="">
+                        <input type="radio" name="niveau_etude" value="universitaire"> Universitaire</label></br>
+                </div>
+            </div></br>
+
+            <!-- LV1 -->
+            <div>
+                <label for="lv1">Quelle est votre LV1 ?</label>
+                <select id="lv1" name="lv1">
+                    <option value="francais">Français</option>
+                    <option value="anglais">Anglais</option>
+                    <option value="espagnol">Espagnol</option>
+                </select>
+            </div></br>
+
+            <!-- Options -->
+            <div>
+                <label>Cocher toutes vos options :</label></br>
+                <div>
+                    <label><input type="checkbox" name="options" value="informatique"> Informatique</label></br>
+                    <label><input type="checkbox" name="options" value="gestion"> Gestion</label></br>
+                    <label><input type="checkbox" name="options" value="math"> Math</label></br>
+                    <label><input type="checkbox" name="options" value="autres"> Autres, à préciser :</label>
+                    <textarea id="autres_details" name="autres_details" rows="2"></textarea>
+                </div>
+            </div></br>
+
+            <!-- Télécharger CV -->
+            <div>
+                <label for="cv">Télécharger CV :</label>
+                <input type="file" id="cv" name="cv">
+            </div></br>
+
+            <!-- Boutons Effacer et Valider -->
+            <div>
+                <input type="reset" value="Effacer">
+                <input type="submit" value="Valider">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>EX</title>
+    <script>
+        function concatenation() {
+            var res = "";
+            for (var i = 0; i < arguments.length; i++) {
+                res += arguments[i];
+            }
+            return res;
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        // Définir les variables ch1 et ch2
+        var ch1 = "Hello";
+        var ch2 = " World";
+
+        document.write(concatenation(ch1, ch2));
+        document.write("<br>");
+        document.write(concatenation("Bonjour", " salutations"));
+        document.write("<br>");
+        document.write(concatenation("Etudiants", " ISET", " Sfax", " INF14"));
+        document.write("<br>");
+        document.write(concatenation("11", " 03", " 2013"));
+    </script>
+</body>
+
+</html>

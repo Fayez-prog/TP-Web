@@ -1,0 +1,77 @@
+body {
+    background-image: url("ordin.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+h1 {
+    text-align: center;
+    font-family: Verdana, serif;
+}
+
+ul {
+    font-style: italic;
+}
+
+ul .l3 {
+    list-style-image: url("puce.jpg");
+}
+
+#parag {
+    font-size: 18px;
+    text-indent: 1cm;
+}
+
+p:first-letter {
+    background-color: #303030;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Entête de page */
+header {
+    width: 1000px;
+    margin-left: 24px;
+    margin-top: 10px;
+    border-bottom: 2px solid red;
+}
+
+/* Pied de page */
+footer {
+    margin-right: 524px;
+    margin-top: 650px;
+}
+
+/* Tableau */
+table.tarifs {
+    border-collapse: collapse;
+    caption-side: bottom;
+}
+
+td,
+th {
+    border-style: dotted;
+    border-color: red;
+}
+
+.important {
+    animation: clignote 1s infinite alternate;
+}
+
+@keyframes clignote {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}

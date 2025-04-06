@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Demande de logement universitaire</title>
+    <script src="Fonctions.js"></script> <!-- Ligne 2 : Appel du fichier JavaScript -->
+</head>
+
+<body>
+    <h1>Demande de logement universitaire</h1>
+    <form name="f">
+        Nom: <input type="text" name="nom" />
+        Prenom: <input type="text" name="prenom" />
+
+        CIN: <input type="text" name="cin" onblur="ValideCIN()" /><br><br> <!-- Ligne 7 : Appel de ValideCIN() -->
+
+        Entrer votre CIN de nouveau: <input type="text" name="cin2" onblur="VerifCIN()" /><br><br>
+        <!-- Ligne 8 : Appel de VerifCIN() -->
+
+        Sexe:
+        <input type="radio" name="sexe" value="male" checked> Mâle
+        <input type="radio" name="sexe" value="femelle"> Femelle <br><br>
+
+        <input type="checkbox" name="redouble"> Redoublant <br><br>
+
+        Combien de fois vous avez bénéficié du logement universitaire auparavant:
+        <select name="nb">
+            <option value="0">0 fois</option>
+            <option value="1">1 fois</option>
+            <option value="2">2 fois</option>
+        </select><br><br>
+
+        <input type="submit" value="Valider" onclick="Resultat()"> <!-- Ligne 18 : Appel de Resultat() -->
+    </form>
+</body>
+
+</html>

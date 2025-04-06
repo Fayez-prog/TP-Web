@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>EX</title>
+    <script>
+        function convEuro(mt) {
+            var eur = mt * 2.4;
+            return eur;
+        }
+        function convDinar(mt) {
+            var dn = mt / 2.4;
+            return dn;
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        do {
+            var mt = prompt("donner un montant");
+        }
+        while ((isNaN(mt)) || (mt < 0));
+        var conv = prompt("convertir en : ");
+        switch (conv) {
+            case "euro": alert("le montant en euro est " + convEuro(mt)); break;
+            case "dinar": alert("le montant en euro est " + convDinar(mt)); break;
+            default: alert("choisir dinar ou euro"); break;
+        }
+    </script>
+</body>
+
+</html>

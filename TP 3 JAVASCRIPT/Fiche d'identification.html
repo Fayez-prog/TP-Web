@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche d'identification d'une voiture</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Fiche d'identification d'une voiture</h1>
+    <form id="carForm">
+        <label for="marque">Marque :</label>
+        <input type="text" id="marque" required>
+
+        <label for="modele">Modèle :</label>
+        <input type="text" id="modele" required>
+
+        <label for="carburant">Carburant :</label>
+        <input type="text" id="carburant" required>
+
+        <label for="dateMC">Date de mise en circulation (jj/mm/aaaa) :</label>
+        <input type="text" id="dateMC" required>
+
+        <label for="chevaux">Nombre de chevaux :</label>
+        <input type="number" id="chevaux" required>
+
+        <button type="button" onclick="genererFiche()">Générer la fiche</button>
+    </form>
+
+    <div id="ficheOutput" class="output" style="display: none;">
+        <h2>Fiche d'identification</h2>
+        <p><strong>Référence :</strong> <span id="reference"></span></p>
+        <p><strong>Marque :</strong> <span id="marqueOutput"></span></p>
+        <p><strong>Date MC :</strong> <span id="dateMCOutput"></span></p>
+        <p><strong>Nombre de chevaux :</strong> <span id="chevauxOutput"></span></p>
+        <p><strong>Modèle :</strong> <span id="modeleOutput"></span></p>
+        <p><strong>Carburant :</strong> <span id="carburantOutput"></span></p>
+    </div>
+
+    <script>
+        function genererFiche() {
+            // Récupération des valeurs saisies
+            const marque = document.getElementById('marque').value.trim().toLowerCase();
+            const modele = document.getElementById('modele').value.trim();
+            const carburant = document.getElementById('carburant').value.trim().toLowerCase();
+            const dateMC = document.getElementById('dateMC').value.trim();
+            const chevaux = document.getElementById('chevaux').value.trim();
+
+            // Génération de la référence
+            const reference = marque.charAt(0).toUpperCase() + marque.charAt(1) + // Deux premiers caractères de la marque
+                dateMC.slice(-2) + // Deux derniers chiffres de l'année
+                carburant.charAt(0).toUpperCase() + // Première lettre du carburant
+                modele; // Modèle
+
+            // Formatage de la date
+            const [jour, mois, annee] = dateMC.split('/');
+            const moisFrancais = [
+                'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+                'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
+            ];
+            const dateFormatee = `${jour} ${moisFrancais[parseInt(mois) - 1]} ${annee}`;
+
+            // Affichage des résultats
+            document.getElementById('reference').textContent = reference;
+            document.getElementById('marqueOutput').textContent = marque;
+            document.getElementById('dateMCOutput').textContent = dateFormatee;
+            document.getElementById('chevauxOutput').textContent = chevaux;
+            document.getElementById('modeleOutput').textContent = modele;
+            document.getElementById('carburantOutput').textContent = carburant;
+
+            // Afficher la fiche
+            document.getElementById('ficheOutput').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>
