@@ -47,13 +47,13 @@ class Database {
             nom VARCHAR(20)
         )");
 
-        // Table article_fournisseur
+        // Table article_fournisseur avec ON DELETE CASCADE
         $pdo->exec("CREATE TABLE IF NOT EXISTS article_fournisseur (
             ref VARCHAR(20),
             id VARCHAR(20),
             PRIMARY KEY (ref, id),
-            FOREIGN KEY (ref) REFERENCES article(ref),
-            FOREIGN KEY (id) REFERENCES fournisseur(id)
+            FOREIGN KEY (ref) REFERENCES article(ref) ON DELETE CASCADE,
+            FOREIGN KEY (id) REFERENCES fournisseur(id) ON DELETE CASCADE
         )");
 
         // Données de test
@@ -122,8 +122,25 @@ class Article {
 
     public static function supprimer($ref) {
         $pdo = Database::getInstance();
-        $stmt = $pdo->prepare("DELETE FROM article WHERE ref = ?");
-        return $stmt->execute([$ref]);
+        
+        // Solution avec transaction et suppression en cascade manuelle
+        $pdo->beginTransaction();
+        
+        try {
+            // 1. D'abord supprimer les relations dans article_fournisseur
+            $stmt = $pdo->prepare("DELETE FROM article_fournisseur WHERE ref = ?");
+            $stmt->execute([$ref]);
+            
+            // 2. Ensuite supprimer l'article lui-même
+            $stmt = $pdo->prepare("DELETE FROM article WHERE ref = ?");
+            $stmt->execute([$ref]);
+            
+            $pdo->commit();
+            return true;
+        } catch (PDOException $e) {
+            $pdo->rollBack();
+            return false;
+        }
     }
 
     public static function tousLesArticles($filtres = []) {
