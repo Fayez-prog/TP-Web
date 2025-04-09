@@ -3,7 +3,7 @@ session_start();
 
 // Configuration de la base de données
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'shopping');
+define('DB_NAME', 'stock');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
